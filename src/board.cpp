@@ -1,1 +1,1 @@
-#include "board.h"
+#include "../inc/board.h"

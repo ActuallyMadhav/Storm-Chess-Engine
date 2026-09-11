@@ -3,8 +3,10 @@
 #include <vector>
 
 // macros
-#define unsigned long long u64
+#define u64 unsigned long long
 
+// check piece color: black > 6; white <= 6
+// (piece <= 6) && piece ? white : black;
 enum pieces {
     empty = 0,  // empty square
 
