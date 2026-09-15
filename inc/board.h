@@ -19,6 +19,9 @@ enum pieces {
 
 class Board{
 private:
+    int board[64];  // starting board as single array
+    // 0: a1, 1: a2, ..., 7: a8
+    // 56: h1, 57: h2, ..., 63: h8
 
 public:
     
