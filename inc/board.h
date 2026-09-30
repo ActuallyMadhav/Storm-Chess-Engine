@@ -1,5 +1,8 @@
+#pragma once
+
 #include <iostream>
 #include <algorithm>
+#include <unordered_map>
 #include <vector>
 
 // macros
@@ -19,10 +22,26 @@ enum pieces {
 
 class Board{
 private:
-    int board[64];  // starting board as single array
-    // 0: a1, 1: a2, ..., 7: a8
-    // 56: h1, 57: h2, ..., 63: h8
+    int board[64] = {
+        wrook, wknight, wbishop, wqueen, wking, wbishop, wknight, wrook,
+        wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn,
+        empty, empty,empty,empty,empty,empty,empty,empty,
+        empty, empty,empty,empty,empty,empty,empty,empty,
+        empty, empty,empty,empty,empty,empty,empty,empty,
+        empty, empty,empty,empty,empty,empty,empty,empty,
+        bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn,
+        brook, bknight, bbishop, bqueen, bking, bbishop, bknight, brook
+    };  // starting board as single array
+    // 0: a1, 1: b1, ..., 7: h1
+    // 56: a8, 57: b8, ..., 63: h8
+
+    // pieces are arranged according to enum pieces
+    char pieceSymbols[13] = {
+        '_',    // empty square
+        'P', 'N', 'B', 'R', 'Q', 'K',  // white pieces
+        'p', 'n', 'b', 'r', 'q', 'k'    // black pieces
+        };
 
 public:
-    
+    void print();   // print board state    
 };
