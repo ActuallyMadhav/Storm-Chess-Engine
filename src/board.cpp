@@ -14,35 +14,28 @@ void Board::print(){
 }
 
 void Board::parseFEN(const std::string& fen){
-    // char delimiter = '/';
-    // std::stringstream ss(fen);
-    // std::string row;
-    // std::vector<std::string> rows;
+    char delimiter = '/';
+    std::stringstream ss(fen);
+    std::string row;
+    std::vector<std::string> rows;
 
-    // while(std::getline(ss, row, delimiter)){
-    //     rows.push_back(row);
-    // }
-
-    // // for(const auto& row : rows){
-    // //     std::cout << row << '\n';
-    // // }
-
-    const size_t size = fen.size();
-    size_t iter = 0;
-    int index = 0;
-
-    // parse string
-    for(; (iter < size) && fen[iter] != ' '; iter++){
-
-        if(fen[iter] != '/') continue;
-
-        if(std::isdigit(fen[iter])){
-            index += (fen[iter] - '0'); // convert char to int eg: '5' to 5
-        }
-        else{
-            //TODO
-        }
+    while(std::getline(ss, row, delimiter)){
+        rows.push_back(row);
     }
 
+    int lastRowIdx = rows.size()-1;
+
+    std::stringstream ss2(rows[lastRowIdx]);
+    std::string lastRow;
+    while(std::getline(ss2, lastRow, ' ')){
+        rows.push_back(lastRow);
+    }
+
+    rows.erase(rows.begin() + lastRowIdx);
+
+    // print rows
+    for(const auto& row : rows){
+        std::cout << row << '\n';
+    }
 
 }
