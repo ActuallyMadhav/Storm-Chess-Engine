@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <unordered_map>
 #include <vector>
+#include <cstdint>
+#include <cstddef>
 
 // macros
 #define u64 unsigned long long
@@ -41,7 +43,21 @@ private:
         'P', 'N', 'B', 'R', 'Q', 'K',  // white pieces
         'p', 'n', 'b', 'r', 'q', 'k'    // black pieces
         };
+    
+    // castling rights
+    bool whiteKingCastle;
+    bool whiteQueenCastle;
+    bool blackKingCastle;
+    bool blackQueenCastle;
+    
+    // en passant legal?
+    bool enPassant[16];
+
+    // turn - white or black
+    bool turn;  // true = white turn
+    
 
 public:
+    void parseFEN(const std::string& fen);
     void print();   // print board state    
 };
