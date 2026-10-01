@@ -10,6 +10,11 @@
 // macros
 #define u64 unsigned long long
 
+enum color{
+    WHITE = 0,
+    BLACK = 1
+};
+
 // check piece color: black > 6; white <= 6
 // (piece <= 6) && piece ? white : black;
 enum pieces {
@@ -53,13 +58,14 @@ private:
     bool blackQueenCastle;
     
     // en passant legal?
-    bool enPassant[16];
+    uint8_t enPassant_target;
 
     // turn - white or black
     bool turn;  // true = white turn
     
 
 public:
-    void parseFEN(const std::string& fen);
+    void parseFEN(const std::string& fen);  // parse fen and set up board according to fen
+    uint8_t setEnPassTarget(const std::string& square);    // update en passant target
     void print();   // print board state    
 };
