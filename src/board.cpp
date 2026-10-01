@@ -1,11 +1,4 @@
 #include "../inc/board.h"
-#include <cctype>
-#include <cstddef>
-#include <algorithm>
-#include <cstdint>
-#include <sstream>
-#include <string>
-#include <sys/types.h>
 
 void Board::print(){
     for(int i = 0; i < 64; i++){

@@ -6,6 +6,12 @@
 #include <vector>
 #include <cstdint>
 #include <cstddef>
+#include <cctype>
+#include <cstddef>
+#include <algorithm>
+#include <sstream>
+#include <string>
+#include <sys/types.h>
 
 // macros
 #define u64 unsigned long long
