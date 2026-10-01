@@ -58,7 +58,7 @@ private:
     bool blackQueenCastle;
     
     // en passant legal?
-    uint8_t enPassant_target;
+    int enPassant_target;
 
     // turn - white or black
     bool turn;  // true = white turn
@@ -66,6 +66,6 @@ private:
 
 public:
     void parseFEN(const std::string& fen);  // parse fen and set up board according to fen
-    uint8_t setEnPassTarget(const std::string& square);    // update en passant target
+    int setEnPassTarget(const std::string& square);    // update en passant target
     void print();   // print board state    
 };

@@ -22,7 +22,7 @@ void Board::print(){
     blackKingCastle ? std::cout << "black king castle true" << '\n' : std::cout << "false" << '\n';
     blackQueenCastle ? std::cout << "black queen castle true" << '\n' : std::cout << "false" << '\n';
 
-    std::cout << static_cast<int>(enPassant_target) << '\n';
+    std::cout << enPassant_target << '\n';
 
 }
 
@@ -93,14 +93,29 @@ void Board::parseFEN(const std::string& fen){
     if(std::count(rows[9].begin(), rows[9].end(), 'K')){
         whiteKingCastle = true;
     }
+    else{
+        whiteKingCastle = false;
+    }
+
     if(std::count(rows[9].begin(), rows[9].end(), 'Q')){
         whiteQueenCastle = true;
     }
+    else{
+        whiteQueenCastle = false;
+    }
+
     if(std::count(rows[9].begin(), rows[9].end(), 'k')){
         blackKingCastle = true;
     }
+    else{
+        blackKingCastle = false;
+    }
+
     if(std::count(rows[9].begin(), rows[9].end(), 'q')){
         blackQueenCastle = true;
+    }
+    else{
+        blackQueenCastle = false;
     }
 
     // 10 - en passant target
@@ -114,7 +129,7 @@ void Board::parseFEN(const std::string& fen){
     }
 }
 
-uint8_t Board::setEnPassTarget(const std::string& square){
+int Board::setEnPassTarget(const std::string& square){
     // TODO
     if(square[0] == '-'){
         return -1;
@@ -123,10 +138,10 @@ uint8_t Board::setEnPassTarget(const std::string& square){
     char fileChar = square[0];
     char rankChar = square[1];
 
-    uint8_t fileIdx = fileChar - 'a';
-    uint8_t rankIdx = rankChar - '1';
+    int fileIdx = fileChar - 'a';
+    int rankIdx = rankChar - '1';
 
-    uint8_t boardSquare = rankIdx * 8 + fileIdx;
+    int boardSquare = rankIdx * 8 + fileIdx;
 
     return boardSquare;
 }
