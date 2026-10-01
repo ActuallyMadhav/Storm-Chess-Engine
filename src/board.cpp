@@ -22,7 +22,7 @@ void Board::print(){
     blackKingCastle ? std::cout << "black king castle true" << '\n' : std::cout << "false" << '\n';
     blackQueenCastle ? std::cout << "black queen castle true" << '\n' : std::cout << "false" << '\n';
 
-    std::cout << enPassant_target << '\n';
+    std::cout << static_cast<int>(enPassant_target) << '\n';
 
 }
 
@@ -109,8 +109,24 @@ void Board::parseFEN(const std::string& fen){
     // 11 - half move clock - used to track 50 move draw rule
     
     // 12 - full move number - tracks number of moves in game. updated after black's turn
+    for(const auto& row : rows){
+        std::cout << row << '\n';
+    }
 }
 
 uint8_t Board::setEnPassTarget(const std::string& square){
     // TODO
+    if(square[0] == '-'){
+        return -1;
+    }
+
+    char fileChar = square[0];
+    char rankChar = square[1];
+
+    uint8_t fileIdx = fileChar - 'a';
+    uint8_t rankIdx = rankChar - '1';
+
+    uint8_t boardSquare = rankIdx * 8 + fileIdx;
+
+    return boardSquare;
 }
