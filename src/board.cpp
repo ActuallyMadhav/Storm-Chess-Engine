@@ -1,6 +1,7 @@
 #include "../inc/board.h"
 #include <cctype>
 #include <cstddef>
+#include <algorithm>
 #include <sstream>
 #include <string>
 
@@ -33,9 +34,31 @@ void Board::parseFEN(const std::string& fen){
 
     rows.erase(rows.begin() + lastRowIdx);
 
-    // print rows
-    for(const auto& row : rows){
-        std::cout << row << '\n';
-    }
+    std::reverse(rows.begin(), rows.begin()+8);
 
+    // print rows
+    // for(const auto& row : rows){
+    //     std::cout << row << '\n';
+    // }
+
+    // modify board state according to fen
+    for(int i = 0; i < 8; i++){ // iterate through rows vector
+        int counter = 0;
+        for(int j = 0; j < rows[i].size(); j++){
+            if(std::isdigit(static_cast<unsigned char>(rows[i][j]))){
+                // 
+                counter += rows[i][j] - '0';
+                continue;
+            }
+            else{
+                int index;
+                auto ptr = std::find(std::begin(pieceSymbols), std::end(pieceSymbols), rows[i][j]);
+                if(ptr != std::end(pieceSymbols)){
+                    index = ptr - pieceSymbols;
+                }
+                board[i*8 + counter] = index;
+                counter++;
+            }
+        }
+    }
 }

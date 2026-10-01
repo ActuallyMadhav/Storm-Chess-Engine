@@ -24,16 +24,18 @@ enum pieces {
 
 class Board{
 private:
-    int board[64] = {
-        wrook, wknight, wbishop, wqueen, wking, wbishop, wknight, wrook,
-        wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn,
-        empty, empty,empty,empty,empty,empty,empty,empty,
-        empty, empty,empty,empty,empty,empty,empty,empty,
-        empty, empty,empty,empty,empty,empty,empty,empty,
-        empty, empty,empty,empty,empty,empty,empty,empty,
-        bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn,
-        brook, bknight, bbishop, bqueen, bking, bbishop, bknight, brook
-    };  // starting board as single array
+    int board[64];
+    // starting position
+    // int board[64] = {
+    //     wrook, wknight, wbishop, wqueen, wking, wbishop, wknight, wrook,
+    //     wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn, wpawn,
+    //     empty, empty,empty,empty,empty,empty,empty,empty,
+    //     empty, empty,empty,empty,empty,empty,empty,empty,
+    //     empty, empty,empty,empty,empty,empty,empty,empty,
+    //     empty, empty,empty,empty,empty,empty,empty,empty,
+    //     bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn, bpawn,
+    //     brook, bknight, bbishop, bqueen, bking, bbishop, bknight, brook
+    // };  // starting board as single array
     // 0: a1, 1: b1, ..., 7: h1
     // 56: a8, 57: b8, ..., 63: h8
 
