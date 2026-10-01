@@ -61,4 +61,7 @@ void Board::parseFEN(const std::string& fen){
             }
         }
     }
+
+    // TODO:
+    // update turn, castling rights, en passant
 }
