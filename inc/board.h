@@ -1,4 +1,6 @@
 #pragma once
+#ifndef BOARD_H
+#define BOARD_H
 
 #include <iostream>
 #include <algorithm>
@@ -14,7 +16,7 @@
 #include <sys/types.h>
 
 // macros
-#define u64 unsigned long long
+using u64 = std::uint64_t;
 
 enum color{
     WHITE = 0,
@@ -51,7 +53,7 @@ private:
     // 56: a8, 57: b8, ..., 63: h8
 
     // pieces are arranged according to enum pieces
-    char pieceSymbols[13] = {
+    static constexpr char pieceSymbols[13] = {
         '_',    // empty square
         'P', 'N', 'B', 'R', 'Q', 'K',  // white pieces
         'p', 'n', 'b', 'r', 'q', 'k'    // black pieces
@@ -75,3 +77,5 @@ public:
     int setEnPassTarget(const std::string& square);    // update en passant target
     void print();   // print board state    
 };
+
+#endif

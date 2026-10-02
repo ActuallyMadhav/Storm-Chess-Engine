@@ -21,14 +21,18 @@ void Board::print(){
 
 void Board::parseFEN(const std::string& fen){
 
-    std::cout << fen << '\n';
+    // reset board before making changes
+    for(int i = 0; i < 64; i++){
+        board[i] = empty;
+    }
 
-    char delimiter = '/';
+    //std::cout << fen << '\n';
+
     std::stringstream ss(fen);
     std::string row;
     std::vector<std::string> rows;
 
-    while(std::getline(ss, row, delimiter)){
+    while(std::getline(ss, row, '/')){
         rows.push_back(row);
     }
 
