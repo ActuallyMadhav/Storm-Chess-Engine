@@ -46,7 +46,7 @@ void Board::parseFEN(const std::string& fen){
 
     rows.erase(rows.begin() + lastRowIdx);
 
-    std::reverse(rows.begin(), rows.begin()+8);
+    std::reverse(rows.begin(), rows.begin()+8); // reverse first 8 rows (not including casting rights onwards)
 
     // print rows
     // for(const auto& row : rows){
@@ -87,33 +87,10 @@ void Board::parseFEN(const std::string& fen){
     }
 
     // 9 - castling rights (KQ - white, kq - black)
-    if(std::count(rows[9].begin(), rows[9].end(), 'K')){
-        whiteKingCastle = true;
-    }
-    else{
-        whiteKingCastle = false;
-    }
-
-    if(std::count(rows[9].begin(), rows[9].end(), 'Q')){
-        whiteQueenCastle = true;
-    }
-    else{
-        whiteQueenCastle = false;
-    }
-
-    if(std::count(rows[9].begin(), rows[9].end(), 'k')){
-        blackKingCastle = true;
-    }
-    else{
-        blackKingCastle = false;
-    }
-
-    if(std::count(rows[9].begin(), rows[9].end(), 'q')){
-        blackQueenCastle = true;
-    }
-    else{
-        blackQueenCastle = false;
-    }
+    whiteKingCastle = (rows[9].find('K') != std::string::npos);
+    whiteQueenCastle = (rows[9].find('Q') != std::string::npos);
+    blackKingCastle = (rows[9].find('k') != std::string::npos);
+    blackQueenCastle = (rows[9].find('q') != std::string::npos);
 
     // 10 - en passant target
     enPassant_target = setEnPassTarget(rows[10]);
