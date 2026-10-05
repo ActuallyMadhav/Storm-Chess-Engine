@@ -2,6 +2,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+// standard headers
 #include <iostream>
 #include <algorithm>
 #include <unordered_map>
@@ -14,6 +15,9 @@
 #include <sstream>
 #include <string>
 #include <sys/types.h>
+
+// my own files
+#include "move.h"
 
 // macros
 using u64 = std::uint64_t;
