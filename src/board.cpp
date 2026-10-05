@@ -1,5 +1,10 @@
 #include "../inc/board.h"
 
+/*
+    DO NOT USE PRINT UNLESS FOR DEBUGGING.
+
+    UCI INTERFACE COMMUNICATES VIA STDOUT
+*/
 void Board::print(){
     for(int i = 0; i < 64; i++){
         std::cout << pieceSymbols[board[i]] << ' ';
@@ -98,9 +103,6 @@ void Board::parseFEN(const std::string& fen){
     // 11 - half move clock - used to track 50 move draw rule
     
     // 12 - full move number - tracks number of moves in game. updated after black's turn
-    for(const auto& row : rows){
-        std::cout << row << '\n';
-    }
 }
 
 int Board::setEnPassTarget(const std::string& square){
