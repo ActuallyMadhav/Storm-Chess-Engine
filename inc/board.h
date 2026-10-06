@@ -79,7 +79,9 @@ private:
 public:
     void parseFEN(const std::string& fen);  // parse fen and set up board according to fen
     int setEnPassTarget(const std::string& square);    // update en passant target
-    void print();   // print board state    
+    void print();   // print board state   
+    
+    void makeMove(const Move& m);
 };
 
 #endif
