@@ -39,6 +39,13 @@ enum pieces {
     bpawn = 7, bknight = 8, bbishop = 9, brook = 10, bqueen = 11, bking = 12
 };
 
+// pieces are arranged according to enum pieces
+static constexpr char pieceSymbols[13] = {
+    '_',    // empty square
+    'P', 'N', 'B', 'R', 'Q', 'K',  // white pieces
+    'p', 'n', 'b', 'r', 'q', 'k'    // black pieces
+    };
+
 class Board{
 private:
     int board[64];
@@ -55,13 +62,6 @@ private:
     // };  // starting board as single array
     // 0: a1, 1: b1, ..., 7: h1
     // 56: a8, 57: b8, ..., 63: h8
-
-    // pieces are arranged according to enum pieces
-    static constexpr char pieceSymbols[13] = {
-        '_',    // empty square
-        'P', 'N', 'B', 'R', 'Q', 'K',  // white pieces
-        'p', 'n', 'b', 'r', 'q', 'k'    // black pieces
-        };
     
     // castling rights
     bool whiteKingCastle;

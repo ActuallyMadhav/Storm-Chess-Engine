@@ -121,3 +121,26 @@ int Board::setEnPassTarget(const std::string& square){
 
     return boardSquare;
 }
+
+void Board::makeMove(const Move& m){
+    if(board[m.fromSquare] == empty){
+        std::cerr << "no piece on selected square" << '\n';
+        return;
+    }
+
+    int pieceToMove = board[m.fromSquare];
+    board[m.fromSquare] = empty;
+    board[m.toSquare] = pieceToMove;
+
+    if(pieceToMove == bking || (m.fromSquare == h8) || (m.fromSquare == a8)){
+        blackKingCastle = false;
+        blackQueenCastle = false;
+    }
+    else if(pieceToMove == wking || (m.fromSquare == a1) || (m.fromSquare == h1)){
+        whiteKingCastle = false;
+        whiteQueenCastle = false;
+    }
+
+    turn = !turn;   // flip turn at end
+    return;
+}
